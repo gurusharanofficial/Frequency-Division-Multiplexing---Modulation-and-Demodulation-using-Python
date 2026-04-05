@@ -32,6 +32,38 @@ __Procedure__:
 
 7 — Demodulate each isolated channel (coherent) and low-pass filter to recover baseband
 
-__Output_:
+__Program__:
+```
+import numpy as np    
+import matplotlib.pyplot as plt    
+Am=14.2    
+fm=523   
+Ac=28.4    
+fc=5230   
+fs=52300    
+b=5.9     
+t=np.arange(0,2/fm,1/fs)    
+m = np.cos(2 * np.pi * fm * t)    
+c=np.cos(2*np.pi*fc*t)    
+s = np.cos(2 * np.pi * fc * t + b * np.cos(2 * np.pi * fm * t))    
+
+plt.subplot(3,1,1)     
+plt.plot(t, m)     
+
+plt.subplot(3,1,2)    
+plt.plot(t,c)     
+
+plt.subplot(3,1,3)      
+plt.plot(t,s)
+```
+__Output__:
+
+<img width="699" height="508" alt="Screenshot 2026-03-27 082825" src="https://github.com/user-attachments/assets/859c1b57-92f1-4491-b371-2f42f2997eb2" />
+
+__Tabulation__:
+
+<img width="1637" height="1532" alt="image" src="https://github.com/user-attachments/assets/9fe8caec-249e-451d-b3a8-74525c9f9a3a" />
 
 __Result__:
+
+The message signal, carrier signal, and frequency modulated (FM) signal will be displayed in separate plots. The modulated signal will show frequency variations corresponding to the amplitude of the message signal.
